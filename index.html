@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossword</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="play.js" defer></script>
+    <script src="load.js" defer></script>
+    <script src="helper.js" defer></script>
+    <div class="ac_clues bar"><h2>Across</h2><hr><ul id="across" class="list"></ul></div>
+    <div class="dw_clues bar"><h2>Down</h2><hr><ul id="down" class="list"></ul></div>
+
+    <button onclick="window.open('print.pdf', '_blank')">Get a printable version</button>
+    <button onclick="reveal_word();">Reveal word</button>
+    <button onclick="reveal_letter();">Reveal letter</button>
+    <button onclick="check_puzzle();">Check puzzle</button>
+    <button onclick="check_word();">Check word</button>
+    <button onclick="format_check(selected);">Check letter</button>
+    <button onclick="get_save_code();">Get save code</button>
+    <button onclick="load_from_save_code(prompt('Enter your save code'));">Load from save code</button>
+</body>
+</html>
