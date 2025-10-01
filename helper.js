@@ -90,19 +90,29 @@ function check_puzzle() {
 function get_save_code() {
     let out = "";
     for (let square of document.querySelectorAll(".square")) {
-        if (square.innerText) out += `${square.id.split(";")[0]}:${square.innerText},`;
+        // if (square.innerText) out += `${square.id.split(";")[0]}:${square.innerText},`;
+        if (!square.innerText) out += " ";
+        else out += square.innerText;
     }
 
     let w = window.open("about:blank", "_blank");
     w.document.write(btoa(out));
 }
 
+let old = false;
 function load_from_save_code(code) {
     let t = atob(code);
-    for (let opt of t.split(",")) {
-        let [i, x] = opt.split(":");
-        let X = i % board.size;
-        let Y = Math.floor(i / board.size);
-        document.getElementById(`${i};${X};${Y}`).innerText = x;
+    if (old) {
+        for (let opt of t.split(",")) {
+            let [i, x] = opt.split(":");
+            let X = i % board.size;
+            let Y = Math.floor(i / board.size);
+            document.getElementById(`${i};${X};${Y}`).innerText = x;
+        }
+    } else {
+        let squares = [...document.querySelectorAll(".square")];
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].innerText = t[i];
+        }
     }
 }
